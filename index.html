@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiwant Arya Study Hub</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+:root{
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#667085;
+    --primary:#5b5cf0;
+    --primary2:#8b5cf6;
+    --border:#e5e7eb;
+    --success:#16a34a;
+    --danger:#ef4444;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+body.dark{
+    --bg:#0b1020;
+    --card:#151c30;
+    --text:#f5f7ff;
+    --muted:#aab3c5;
+    --border:#29334d;
+    --shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#5b5cf0,#8b5cf6,#ec4899);
+    color:white;
+    padding:28px 18px;
+    box-shadow:0 8px 25px rgba(91,92,240,.25);
+}
+
+.header-content{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.logo h1{
+    font-size:28px;
+    letter-spacing:1px;
+}
+
+.logo p{
+    margin-top:6px;
+    opacity:.9;
+}
+
+#clock{
+    font-size:16px;
+    font-weight:bold;
+    text-align:right;
+}
+
+.theme-btn{
+    border:none;
+    background:rgba(255,255,255,.18);
+    color:white;
+    padding:11px 15px;
+    border-radius:12px;
+    cursor:pointer;
+    margin-top:8px;
+}
+
+/* MAIN */
+.container{
+    width:94%;
+    max-width:1200px;
+    margin:25px auto 50px;
+}
+
+/* WELCOME */
+.welcome{
+    background:var(--card);
+    padding:25px;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    margin-bottom:22px;
+}
+
+.welcome h2{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.welcome span{
+    color:var(--primary);
+}
+
+/* STATS */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-bottom:22px;
+}
+
+.stat{
+    background:var(--card);
+    padding:20px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+}
+
+.stat-icon{
+    font-size:27px;
+}
+
+.stat h3{
+    margin-top:12px;
+    font-size:27px;
+}
+
+.stat p{
+    color:var(--muted);
+    margin-top:5px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:22px;
+    box-shadow:var(--shadow);
+}
+
+.card h2{
+    margin-bottom:17px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+/* SUBJECTS */
+.subject{
+    margin:15px 0;
+}
+
+.subject-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:7px;
+}
+
+.subject-name{
+    font-weight:bold;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:var(--border);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    background:linear-gradient(90deg,var(--primary),var(--primary2));
+    border-radius:20px;
+    transition:.5s;
+}
+
+/* TASKS */
+.task-input{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+input,textarea,select{
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+    outline:none;
+    border-radius:12px;
+    padding:12px;
+}
+
+input{
+    flex:1;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+}
+
+.add-btn{
+    background:var(--primary);
+    color:white;
+    padding:12px 17px;
+    border-radius:12px;
+    font-weight:bold;
+}
+
+.task{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:13px;
+    margin:8px 0;
+    background:var(--bg);
+    border-radius:12px;
+    border:1px solid var(--border);
+}
+
+.task span{
+    flex:1;
+}
+
+.task.done span{
+    text-decoration:line-through;
+    opacity:.5;
+}
+
+.delete-task{
+    background:var(--danger);
+    color:white;
+    padding:7px 10px;
+    border-radius:8px;
+}
+
+/* TIMER */
+.timer{
+    text-align:center;
+}
+
+.timer-display{
+    font-size:65px;
+    font-weight:bold;
+    margin:15px 0;
+    letter-spacing:3px;
+}
+
+.timer-mode{
+    color:var(--muted);
+    margin-bottom:15px;
+}
+
+.timer-buttons{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.timer-buttons button{
+    padding:12px 18px;
+    border-radius:12px;
+    color:white;
+    background:var(--primary);
+}
+
+.timer-buttons .reset{
+    background:var(--danger);
+}
+
+/* GOAL */
+.goal-box{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.circle{
+    width:125px;
+    height:125px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:conic-gradient(var(--primary) 0deg,var(--border) 0deg);
+    position:relative;
+}
+
+.circle::after{
+    content:"";
+    width:95px;
+    height:95px;
+    background:var(--card);
+    border-radius:50%;
+    position:absolute;
+}
+
+.circle strong{
+    z-index:2;
+    font-size:23px;
+}
+
+/* NOTES */
+textarea{
+    width:100%;
+    min-height:220px;
+    resize:vertical;
+}
+
+/* CALCULATOR */
+.calculator{
+    max-width:360px;
+    margin:auto;
+}
+
+.calc-display{
+    width:100%;
+    height:65px;
+    font-size:25px;
+    text-align:right;
+    margin-bottom:10px;
+    padding:12px;
+}
+
+.calc-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+}
+
+.calc-grid button{
+    height:58px;
+    border-radius:12px;
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+    font-size:19px;
+}
+
+.calc-grid button:hover{
+    background:var(--primary);
+    color:white;
+}
+
+.calc-grid .equal{
+    background:var(--primary);
+    color:white;
+}
+
+/* QUOTE */
+.quote{
+    text-align:center;
+    padding:20px;
+}
+
+.quote-text{
+    font-size:20px;
+    line-height:1.6;
+    font-style:italic;
+}
+
+.quote-author{
+    color:var(--muted);
+    margin-top:12px;
+}
+
+/* JEE */
+.jee-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.jee-item{
+    background:var(--bg);
+    border:1px solid var(--border);
+    padding:15px;
+    border-radius:14px;
+}
+
+.jee-item label{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+/* CONTROLS */
+.controls{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.small-btn{
+    padding:10px 14px;
+    border-radius:10px;
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:25px;
+    color:var(--muted);
+}
+
+footer strong{
+    color:var(--primary);
+}
+
+/* ANIMATION */
+.card,.stat,.welcome{
+    animation:fadeUp .5s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+@media(max-width:850px){
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .jee-list{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .header-content{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    #clock{
+        text-align:left;
+    }
+}
+
+@media(max-width:520px){
+    .stats{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .stat{
+        padding:15px;
+    }
+
+    .stat h3{
+        font-size:22px;
+    }
+
+    .logo h1{
+        font-size:22px;
+    }
+
+    .timer-display{
+        font-size:48px;
+    }
+
+    .goal-box{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .jee-list{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+
+<div class="logo">
+<h1>🎓 SHIWANT ARYA STUDY HUB</h1>
+<p>Study • Practice • Improve • Repeat 🚀</p>
+</div>
+
+<div>
+<div id="clock">Loading...</div>
+<button class="theme-btn" onclick="toggleTheme()">🌙 Dark / ☀️ Light</button>
+</div>
+
+</div>
+</header>
+
+
+<div class="container">
+
+<!-- WELCOME -->
+<section class="welcome">
+<h2>Welcome back, <span>Shiwant</span> 👋</h2>
+<p>आज का लक्ष्य छोटा रखो, लेकिन उसे पूरा करके ही उठो. 💪</p>
+</section>
+
+
+<!-- STATS -->
+<section class="stats">
+
+<div class="stat">
+<div class="stat-icon">⏱️</div>
+<h3 id="studyMinutes">0</h3>
+<p>Study Minutes</p>
+</div>
+
+<div class="stat">
+<div class="stat-icon">✅</div>
+<h3 id="completedTasks">0</h3>
+<p>Completed Tasks</p>
+</div>
+
+<div class="stat">
+<div class="stat-icon">📚</div>
+<h3 id="totalTasks">0</h3>
+<p>Total Tasks</p>
+</div>
+
+<div class="stat">
+<div class="stat-icon">🎯</div>
+<h3 id="overallProgress">0%</h3>
+<p>Overall Progress</p>
+</div>
+
+</section>
+
+
+<div class="grid">
+
+<!-- SUBJECT PROGRESS -->
+<section class="card">
+<h2>📚 Subject Progress</h2>
+
+<div class="subject">
+<div class="subject-top">
+<span class="subject-name">⚡ Physics</span>
+<span id="physicsValue">0%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" id="physicsBar" style="width:0%"></div>
+</div>
+</div>
+
+<div class="subject">
+<div class="subject-top">
+<span class="subject-name">🧪 Chemistry</span>
+<span id="chemistryValue">0%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" id="chemistryBar" style="width:0%"></div>
+</div>
+</div>
+
+<div class="subject">
+<div class="subject-top">
+<span class="subject-name">📐 Mathematics</span>
+<span id="mathValue">0%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" id="mathBar" style="width:0%"></div>
+</div>
+</div>
+
+<div class="subject">
+<div class="subject-top">
+<span class="subject-name">📖 Hindi</span>
+<span id="hindiValue">0%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" id="hindiBar" style="width:0%"></div>
+</div>
+</div>
+
+<div class="subject">
+<div class="subject-top">
+<span class="subject-name">🔤 English</span>
+<span id="englishValue">0%</span>
+</div>
+<div class="progress">
+<div class="progress-bar" id="englishBar" style="width:0%"></div>
+</div>
+</div>
+
+</section>
+
+
+<!-- STUDY GOAL -->
+<section class="card">
+<h2>🎯 Today's Study Goal</h2>
+
+<div class="goal-box">
+
+<div class="circle" id="goalCircle">
+<strong id="goalPercent">0%</strong>
+</div>
+
+<div>
+<h3><span id="goalDone">0</span> / <span id="goalTarget">240</span> minutes</h3>
+<p style="color:var(--muted);margin-top:8px">
+Daily target: 4 hours
+</p>
+
+<br>
+
+<div class="controls">
+<button class="small-btn" onclick="changeGoal(60)">+1 Hour</button>
+<button class="small-btn" onclick="changeGoal(30)">+30 Min</button>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- TASK MANAGER -->
+<section class="card">
+<h2>✅ Daily Tasks</h2>
+
+<div class="task-input">
+<input id="taskInput" placeholder="Example: Physics Chapter 2 revise">
+<button class="add-btn" onclick="addTask()">Add</button>
+</div>
+
+<div id="taskList"></div>
+
+</section>
+
+
+<!-- POMODORO -->
+<section class="card">
+<h2>⏱️ Focus Timer</h2>
+
+<div class="timer">
+
+<div class="timer-mode" id="timerMode">
+25 minute focus session
+</div>
+
+<div class="timer-display" id="timerDisplay">
+25:00
+</div>
+
+<div class="timer-buttons">
+<button onclick="startTimer()">▶ Start</button>
+<button onclick="pauseTimer()">⏸ Pause</button>
+<button class="reset" onclick="resetTimer()">↻ Reset</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NOTES -->
+<section class="card full">
+<h2>📝 Quick Notes</h2>
+
+<textarea id="notes"
+placeholder="यहाँ अपने important notes, formulas, doubts या study plan लिखो..."></textarea>
+
+<br><br>
+
+<div class="controls">
+<button class="add-btn" onclick="saveNotes()">💾 Save Notes</button>
+<button class="small-btn" onclick="clearNotes()">🗑️ Clear</button>
+</div>
+
+</section>
+
+
+<!-- CALCULATOR -->
+<section class="card">
+<h2>🧮 Calculator</h2>
+
+<div class="calculator">
+
+<input class="calc-display" id="calcDisplay" readonly>
+
+<div class="calc-grid">
+
+<button onclick="calc('7')">7</button>
+<button onclick="calc('8')">8</button>
+<button onclick="calc('9')">9</button>
+<button onclick="calc('/')">÷</button>
+
+<button onclick="calc('4')">4</button>
+<button onclick="calc('5')">5</button>
+<button onclick="calc('6')">6</button>
+<button onclick="calc('*')">×</button>
+
+<button onclick="calc('1')">1</button>
+<button onclick="calc('2')">2</button>
+<button onclick="calc('3')">3</button>
+<button onclick="calc('-')">−</button>
+
+<button onclick="calc('0')">0</button>
+<button onclick="calc('.')">.</button>
+<button onclick="calculate()">=</button>
+<button onclick="calc('+')">+</button>
+
+<button onclick="clearCalc()">C</button>
+<button onclick="calc('(')">(</button>
+<button onclick="calc(')')">)</button>
+<button onclick="backspace()">⌫</button>
+
+</div>
+</div>
+
+</section>
+
+
+<!-- MOTIVATION -->
+<section class="card">
+<h2>🔥 Today's Motivation</h2>
+
+<div class="quote">
+
+<div class="quote-text" id="quoteText">
+"Success is the sum of small efforts repeated every day."
+</div>
+
+<div class="quote-author">
+— Study Mode ON 🚀
+</div>
+
+<br>
+
+<button class="add-btn" onclick="newQuote()">
+✨ New Quote
+</button>
+
+</div>
+
+</section>
+
+
+<!-- JEE TRACKER -->
+<section class="card full">
+
+<h2>🎓 JEE Chapter Tracker</h2>
+
+<p style="color:var(--muted);margin-bottom:18px">
+अपने chapters complete होने पर checkbox tick करो.
+</p>
+
+<div class="jee-list">
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Physics — Units & Dimensions
+</label>
+</div>
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Physics — Motion in Straight Line
+</label>
+</div>
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Physics — Motion in Plane
+</label>
+</div>
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Chemistry — Mole Concept
+</label>
+</div>
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Chemistry — Atomic Structure
+</label>
+</div>
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Chemistry — Periodic Table
+</label>
+</div>
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Maths — Sets
+</label>
+</div>
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Maths — Relations & Functions
+</label>
+</div>
+
+<div class="jee-item">
+<label>
+<input type="checkbox" class="jeeCheck">
+Maths — Trigonometry
+</label>
+</div>
+
+</div>
+
+<br>
+
+<p>
+JEE Tracker Progress:
+<strong id="jeeProgress">0%</strong>
+</p>
+
+<div class="progress" style="margin-top:10px">
+<div class="progress-bar" id="jeeBar" style="width:0%"></div>
+</div>
+
+</section>
+
+
+<!-- DATA -->
+<section class="card full">
+
+<h2>⚙️ Dashboard Settings</h2>
+
+<p style="color:var(--muted);margin-bottom:15px">
+आपका tasks, notes और progress browser में automatically save होता है.
+</p>
+
+<div class="controls">
+<button class="small-btn" onclick="saveAll()">💾 Save Everything</button>
+<button class="small-btn" onclick="resetAll()">🔄 Reset Dashboard</button>
+</div>
+
+</section>
+
+</div>
+</div>
+
+
+<footer>
+<p>Made with ❤️ for <strong>SHIWANT ARYA</strong></p>
+<p style="margin-top:7px">Keep Learning • Keep Growing 🚀</p>
+</footer>
+
+
+<script>
+
+/* =========================
+   CLOCK
+========================= */
+
+function updateClock(){
+
+    const now = new Date();
+
+    const time = now.toLocaleTimeString('en-IN',{
+        hour:'2-digit',
+        minute:'2-digit',
+        second:'2-digit'
+    });
+
+    const date = now.toLocaleDateString('en-IN',{
+        weekday:'long',
+        day:'numeric',
+        month:'long',
+        year:'numeric'
+    });
+
+    document.getElementById("clock").innerHTML =
+        time + "<br>" + date;
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleTheme(){
+
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+    );
+}
+
+if(localStorage.getItem("theme")==="dark"){
+    document.body.classList.add("dark");
+}
+
+
+/* =========================
+   TASK SYSTEM
+========================= */
+
+let tasks =
+JSON.parse(localStorage.getItem("tasks")) || [];
+
+function saveTasks(){
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+}
+
+function renderTasks(){
+
+    const list=document.getElementById("taskList");
+
+    list.innerHTML="";
+
+    tasks.forEach((task,index)=>{
+
+        const div=document.createElement("div");
+
+        div.className="task " + (task.done ? "done":"");
+
+        div.innerHTML=`
+        <input type="checkbox"
+        ${task.done ? "checked":""}
+        onchange="toggleTask(${index})">
+
+        <span>${escapeHTML(task.text)}</span>
+
+        <button class="delete-task"
+        onclick="deleteTask(${index})">✕</button>
+        `;
+
+        list.appendChild(div);
+    });
+
+    updateStats();
+}
+
+function escapeHTML(text){
+
+    const div=document.createElement("div");
+
+    div.textContent=text;
+
+    return div.innerHTML;
+}
+
+function addTask(){
+
+    const input=document.getElementById("taskInput");
+
+    const text=input.value.trim();
+
+    if(!text){
+        alert("पहले task लिखो 🙂");
+        return;
+    }
+
+    tasks.push({
+        text:text,
+        done:false
+    });
+
+    input.value="";
+
+    saveTasks();
+    renderTasks();
+}
+
+function toggleTask(index){
+
+    tasks[index].done=!tasks[index].done;
+
+    saveTasks();
+    renderTasks();
+}
+
+function deleteTask(index){
+
+    tasks.splice(index,1);
+
+    saveTasks();
+    renderTasks();
+}
+
+document.getElementById("taskInput")
+.addEventListener("keydown",function(e){
+
+    if(e.key==="Enter"){
+        addTask();
+    }
+
+});
+
+
+/* =========================
+   STATS
+========================= */
+
+let studyMinutes =
+Number(localStorage.getItem("studyMinutes")) || 0;
+
+let goalTarget =
+Number(localStorage.getItem("goalTarget")) || 240;
+
+function updateStats(){
+
+    const total=tasks.length;
+
+    const completed=
+        tasks.filter(t=>t.done).length;
+
+    document.getElementById("completedTasks")
+        .textContent=completed;
+
+    document.getElementById("totalTasks")
+        .textContent=total;
+
+    let progress=0;
+
+    if(total>0){
+        progress=Math.round((completed/total)*100);
+    }
+
+    document.getElementById("overallProgress")
+        .textContent=progress+"%";
+
+    document.getElementById("studyMinutes")
+        .textContent=studyMinutes;
+
+    updateGoal();
+}
+
+
+/* =========================
+   STUDY GOAL
+========================= */
+
+function updateGoal(){
+
+    document.getElementById("goalDone")
+        .textContent=studyMinutes;
+
+    document.getElementById("goalTarget")
+        .textContent=goalTarget;
+
+    let percent=
+        Math.min(100,
+        Math.round((studyMinutes/goalTarget)*100));
+
+    document.getElementById("goalPercent")
+        .textContent=percent+"%";
+
+    const degree=percent*3.6;
+
+    document.getElementById("goalCircle")
+        .style.background=
+        `conic-gradient(var(--primary) ${degree}deg,var(--border) ${degree}deg)`;
+}
+
+function changeGoal(minutes){
+
+    goalTarget+=minutes;
+
+    localStorage.setItem(
+        "goalTarget",
+        goalTarget
+    );
+
+    updateGoal();
+}
+
+
+/* =========================
+   POMODORO TIMER
+========================= */
+
+let timeLeft=25*60;
+
+let timer=null;
+
+function updateTimer(){
+
+    const min=
+        Math.floor(timeLeft/60)
+        .toString().padStart(2,"0");
+
+    const sec=
+        (timeLeft%60)
+        .toString().padStart(2,"0");
+
+    document.getElementById("timerDisplay")
+        .textContent=min+":"+sec;
+}
+
+function startTimer(){
+
+    if(timer) return;
+
+    document.getElementById("timerMode")
+        .textContent="🔥 Focus Mode — Study now!";
+
+    timer=setInterval(()=>{
+
+        if(timeLeft>0){
+
+            timeLeft--;
+
+            updateTimer();
+
+        }else{
+
+            clearInterval(timer);
+
+            timer=null;
+
+            studyMinutes+=25;
+
+            localStorage.setItem(
+                "studyMinutes",
+                studyMinutes
+            );
+
+            updateStats();
+
+            alert("🎉 25 minute study session completed!");
+
+            timeLeft=25*60;
+
+            updateTimer();
+        }
+
+    },1000);
+}
+
+function pauseTimer(){
+
+    clearInterval(timer);
+
+    timer=null;
+
+    document.getElementById("timerMode")
+        .textContent="⏸ Timer Paused";
+}
+
+function resetTimer(){
+
+    clearInterval(timer);
+
+    timer=null;
+
+    timeLeft=25*60;
+
+    updateTimer();
+
+    document.getElementById("timerMode")
+        .textContent="25 minute focus session";
+}
+
+updateTimer();
+
+
+/* =========================
+   NOTES
+========================= */
+
+const notes=document.getElementById("notes");
+
+notes.value=
+localStorage.getItem("studyNotes") || "";
+
+function saveNotes(){
+
+    localStorage.setItem(
+        "studyNotes",
+        notes.value
+    );
+
+    alert("📝 Notes saved!");
+}
+
+function clearNotes(){
+
+    if(confirm("Notes clear करना है?")){
+
+        notes.value="";
+
+        localStorage.removeItem("studyNotes");
+    }
+}
+
+
+/* =========================
+   CALCULATOR
+========================= */
+
+let calcValue="";
+
+function calc(value){
+
+    calcValue+=value;
+
+    document.getElementById("calcDisplay")
+        .value=calcValue;
+}
+
+function clearCalc(){
+
+    calcValue="";
+
+    document.getElementById("calcDisplay")
+        .value="";
+}
+
+function backspace(){
+
+    calcValue=calcValue.slice(0,-1);
+
+    document.getElementById("calcDisplay")
+        .value=calcValue;
+}
+
+function calculate(){
+
+    try{
+
+        /*
+        Basic calculator expression.
+        */
+
+        const result=
+            Function('"use strict";return ('+
+            calcValue+')')();
+
+        calcValue=String(result);
+
+        document.getElementById("calcDisplay")
+            .value=calcValue;
+
+    }catch{
+
+        document.getElementById("calcDisplay")
+            .value="Error";
+
+        calcValue="";
+    }
+}
+
+
+/* =========================
+   MOTIVATIONAL QUOTES
+========================= */
+
+const quotes=[
+
+"Success is built one study session at a time.",
+
+"आज की मेहनत ही कल का confidence बनेगी.",
+
+"Discipline beats motivation.",
+
+"जो chapter आज पढ़ोगे, वही कल आसान लगेगा.",
+
+"Small progress is still progress.",
+
+"Dream बड़ा है तो consistency भी बड़ी रखो.",
+
+"Focus on the work, not the clock.",
+
+"हर दिन थोड़ा बेहतर बनो.",
+
+"JEE एक दिन में नहीं, रोज़ की मेहनत से clear होता है.",
+
+"Don't stop until you are proud of yourself."
+
+];
+
+function newQuote(){
+
+    const random=
+        Math.floor(Math.random()*quotes.length);
+
+    document.getElementById("quoteText")
+        .textContent='"'+quotes[random]+'"';
+}
+
+
+/* =========================
+   JEE TRACKER
+========================= */
+
+const jeeChecks=
+document.querySelectorAll(".jeeCheck");
+
+function updateJEE(){
+
+    let checked=0;
+
+    jeeChecks.forEach((check,index)=>{
+
+        if(check.checked){
+            checked++;
+        }
+
+        localStorage.setItem(
+            "jee_"+index,
+            check.checked
+        );
+    });
+
+    const percent=
+        Math.round(
+            (checked/jeeChecks.length)*100
+        );
+
+    document.getElementById("jeeProgress")
+        .textContent=percent+"%";
+
+    document.getElementById("jeeBar")
+        .style.width=percent+"%";
+}
+
+jeeChecks.forEach((check,index)=>{
+
+    check.checked=
+        localStorage.getItem("jee_"+index)==="true";
+
+    check.addEventListener(
+        "change",
+        updateJEE
+    );
+
+});
+
+updateJEE();
+
+
+/* =========================
+   SAVE EVERYTHING
+========================= */
+
+function saveAll(){
+
+    saveTasks();
+
+    localStorage.setItem(
+        "studyNotes",
+        notes.value
+    );
+
+    localStorage.setItem(
+        "studyMinutes",
+        studyMinutes
+    );
+
+    localStorage.setItem(
+        "goalTarget",
+        goalTarget
+    );
+
+    alert("💾 Everything saved successfully!");
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+function resetAll(){
+
+    const yes=
+        confirm(
+        "⚠️ क्या तुम पूरा dashboard reset करना चाहते हो?"
+        );
+
+    if(!yes) return;
+
+    localStorage.clear();
+
+    location.reload();
+}
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+renderTasks();
+updateStats();
+updateGoal();
+
+</script>
+
+</body>
+  </html>
